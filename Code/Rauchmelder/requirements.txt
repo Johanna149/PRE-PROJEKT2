@@ -1,0 +1,3 @@
+# Python Server Dependencies
+flask
+psycopg2-binary
