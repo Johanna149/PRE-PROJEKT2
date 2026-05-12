@@ -17,13 +17,14 @@
 #include "esp_http_client.h"
 #include "esp_wifi.h"
 #include "nvs_flash.h"
+#include "wifi.h"
 
 const static char *TAG = "MQ2";
 
 /*---------------------------------------------------------------
         Server Konfiguration
 ---------------------------------------------------------------*/
-#define SERVER_URL     "http://10.0.29.177:5000/api/sensor-data"
+#define SERVER_URL "http://172.20.10.9:5297/api/sensor-data"
 #define DEVICE_ID      "ESP32-001"
 #define WIFI_SSID      "iPhone von Johanna"
 #define WIFI_PASSWORD  "tudasnicht"
@@ -118,32 +119,6 @@ static void send_sensor_data_to_server(int adc_raw, int voltage, float vout, flo
     }
 
     esp_http_client_cleanup(client);
-}
-
-/*---------------------------------------------------------------
-        WiFi Initialisierung
----------------------------------------------------------------*/
-static void wifi_init_sta(void)
-{
-    esp_netif_t *netif = esp_netif_create_default_wifi_sta();
-    
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-
-    wifi_config_t wifi_config = {
-        .sta = {
-            .threshold.authmode = WIFI_AUTH_WPA2_PSK,
-        },
-    };
-    
-    strncpy((char *)wifi_config.sta.ssid, WIFI_SSID, sizeof(wifi_config.sta.ssid));
-    strncpy((char *)wifi_config.sta.password, WIFI_PASSWORD, sizeof(wifi_config.sta.password));
-
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
-    ESP_ERROR_CHECK(esp_wifi_start());
-
-    ESP_LOGI(TAG, "wifi_init_sta verbinde mit SSID: %s", WIFI_SSID);
 }
 
 void app_main(void)

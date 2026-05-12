@@ -1,7 +1,7 @@
 #pragma once
 
-#define SERVER_URL "http://localhost:5297/api/sensor-data"
-//#define SERVER_URL "http://172.20.10.2:5297/api/sensor-data" wenn von anderem laptop zugreifen
+#define SERVER_URL "http://172.20.10.9:5297/api/sensor-data"
+//#define SERVER_URL "http://localhost:5297/api/sensor-data" // nur wenn ESP auf gleichem PC läuft
 #define DEVICE_ID      "ESP32-001"
 #define WIFI_SSID      "Chef´s Phone"
 #define WIFI_PASSWORD  "schurlmeone"
