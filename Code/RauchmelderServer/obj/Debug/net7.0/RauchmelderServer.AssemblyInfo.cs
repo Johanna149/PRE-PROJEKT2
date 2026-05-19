@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RauchmelderServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+152dd0b7d024cc0a4d84da22d9efbae38ce0c8f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+827a3cc2aa4e764e9991c64ced1ade0ded9f45a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("RauchmelderServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RauchmelderServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

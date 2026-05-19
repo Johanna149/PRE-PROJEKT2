@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "IrGVyTmE6RrpWRiA4oIh8Gx54xgpdPzm1Ssr7vpE11E=",
-  "Source": "RauchmelderServer",
-  "BasePath": "_content/RauchmelderServer",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"RoKbM74riG0Vs47wPIJP5N5TdBDaN08+wUt9qCp8bGc=","Source":"RauchmelderServer","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

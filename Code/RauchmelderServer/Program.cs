@@ -65,4 +65,4 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
 }
 
-app.Run();
+app.Run("http://0.0.0.0:5297");
