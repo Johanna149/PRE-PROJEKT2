@@ -5,6 +5,9 @@ using RauchmelderServer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Lauscht auf allen Netzwerk-Interfaces, nicht nur localhost
+builder.WebHost.UseUrls("http://0.0.0.0:5297");
+
 // Add services to the container.
 builder.Services.AddDbContext<SensorDbContext>(options =>
     options.UseSqlite("Data Source=sensor.db"));
