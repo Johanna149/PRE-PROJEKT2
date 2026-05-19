@@ -1,0 +1,10 @@
+services:
+  db:
+    image: docker.io/postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 140908
+      POSTGRES_USER: johannaschindler
+      POSTGRES_DB: preprojekt2
+    
