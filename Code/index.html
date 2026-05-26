@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rauchmelder Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>IoT Control</h2>
+
+        <button onclick="showPage('dashboard')" class="active-btn">
+            <i class="fa-solid fa-gauge"></i>
+            Dashboard
+        </button>
+
+        <button onclick="showPage('sensoren')">
+            <i class="fa-solid fa-microchip"></i>
+            Sensoren
+        </button>
+
+        <button onclick="showPage('datenbank')">
+            <i class="fa-solid fa-database"></i>
+            Datenbank
+        </button>
+
+        <button onclick="showPage('einstellungen')">
+            <i class="fa-solid fa-gear"></i>
+            Einstellungen
+        </button>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <!-- DASHBOARD -->
+
+        <div id="dashboard" class="page active-page">
+
+            <h1>Rauchmelder Dashboard</h1>
+
+            <p class="subtitle">
+                Überwachung und Verwaltung Ihrer ESP32-basierten Sensoren
+            </p>
+
+            <!-- Statistik Karten -->
+
+            <div class="cards">
+
+                <div class="card green">
+
+                    <div class="card-top">
+
+                        <h3>Aktive Sensoren</h3>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <h2 id="value">4</h2>
+
+                </div>
+
+                <div class="card red">
+
+                    <div class="card-top">
+
+                        <h3>Alarme</h3>
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    </div>
+
+                    <h2>1</h2>
+
+                </div>
+
+                <div class="card cyan">
+
+                    <div class="card-top">
+
+                        <h3>Durchschnittswert</h3>
+
+                        <i class="fa-solid fa-wave-square"></i>
+
+                    </div>
+
+                    <h2>34</h2>
+
+                </div>
+
+            </div>
+
+            <!-- Dropdown -->
+
+            <div class="dropdown">
+
+                <label>Sensor auswählen:</label>
+
+                <select>
+
+                    <option>Rauchmelder 1 - Wohnzimmer</option>
+                    <option>Rauchmelder 2 - Küche</option>
+                    <option>Rauchmelder 3 - Schlafzimmer</option>
+
+                </select>
+
+            </div>
+
+            <!-- Diagramm -->
+
+            <div class="chart-container">
+
+                <h2>Messwerte über Zeit</h2>
+
+                <canvas id="myChart"></canvas>
+
+            </div>
+
+        </div>
+
+        <!-- SENSOREN -->
+
+        <div id="sensoren" class="page">
+
+            <h1>Sensor-Verwaltung</h1>
+
+            <div class="sensor-grid">
+
+                <div class="sensor-card">
+
+                    <div class="online-dot"></div>
+
+                    <h3>Rauchmelder 1</h3>
+
+                    <p>ID: ESP32-001</p>
+                    <p>Standort: Wohnzimmer</p>
+                    <p>Status: Online</p>
+
+                </div>
+
+                <div class="sensor-card">
+
+                    <div class="online-dot"></div>
+
+                    <h3>Rauchmelder 2</h3>
+
+                    <p>ID: ESP32-002</p>
+                    <p>Standort: Küche</p>
+                    <p>Status: Online</p>
+
+                </div>
+
+                <div class="sensor-card">
+
+                    <div class="online-dot"></div>
+
+                    <h3>Rauchmelder 3</h3>
+
+                    <p>ID: ESP32-003</p>
+                    <p>Standort: Schlafzimmer</p>
+                    <p>Status: Online</p>
+
+                </div>
+
+                <div class="sensor-card">
+
+                    <div class="online-dot"></div>
+
+                    <h3>Rauchmelder 4</h3>
+
+                    <p>ID: ESP32-004</p>
+                    <p>Standort: Flur</p>
+                    <p>Status: Online</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DATENBANK -->
+
+        <div id="datenbank" class="page">
+
+            <h1>Datenbankanbindung</h1>
+
+            <div class="database-box">
+
+                <p>
+                    Hier können Datenbankwerte gespeichert und angezeigt werden.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- EINSTELLUNGEN -->
+
+        <div id="einstellungen" class="page">
+
+            <h1>Einstellungen</h1>
+
+            <div class="settings-box">
+
+                <label>Alarmschwellenwert</label>
+
+                <input type="number" value="70">
+
+                <div class="checkbox">
+
+                    <input type="checkbox" checked>
+
+                    <span>E-Mail-Benachrichtigungen aktivieren</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // =========================
+        // Seiten wechseln
+        // =========================
+
+        function showPage(pageId){
+
+            let pages = document.querySelectorAll('.page');
+
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            document.getElementById(pageId)
+            .classList.add('active-page');
+        }
+
+
+        // =========================
+        // Chart.js Diagramm
+        // =========================
+
+        const ctx = document.getElementById('myChart');
+
+        const myChart = new Chart(ctx, {
+
+            type: 'line',
+
+            data: {
+
+                labels: [],
+
+                datasets: [{
+
+                    label: 'MQ2 Messwerte',
+
+                    data: [],
+
+                    borderColor: '#00d9ff',
+
+                    backgroundColor: 'rgba(0,217,255,0.15)',
+
+                    fill: true,
+
+                    tension: 0.4,
+
+                    pointRadius: 5
+
+                }]
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+
+                },
+
+                scales: {
+
+                    x: {
+                        ticks: {
+                            color: 'white'
+                        }
+                    },
+
+                    y: {
+                        ticks: {
+                            color: 'white'
+                        }
+                    }   
+
+                }
+
+            }
+
+        });
+
+
+        // =========================
+        // Daten vom Backend laden
+        // =========================
+
+        async function loadSensorData(){
+
+            try{
+
+                const response = await fetch(
+                    "http://10.0.29.177:5297/api/sensor-data"
+                );
+
+                const data = await response.json();
+5
+                console.log(data);
+
+                // Wenn Daten vorhanden
+
+                if(data.length > 0){
+
+                    // Neuester Wert
+
+                    const latest = data[0];
+
+                    // Dashboard Karten
+
+                    document.getElementById("value")
+                    .innerHTML = latest.adcRaw;
+
+                    // Durchschnittswert
+
+                    document.getElementById("avgValue")
+                    .innerHTML = latest.voltage;
+
+                    // Alarm Status
+
+                    if(latest.ratio > 2){
+
+                        document.getElementById("alarmCount")
+                        .innerHTML = "1";
+
+                    }else{
+
+                        document.getElementById("alarmCount")
+                        .innerHTML = "0";
+                    }
+
+
+                    // =========================
+                    // Diagramm Daten
+                    // =========================
+
+                    const values = data.map(x => x.adcRaw);
+
+                    const labels = data.map(x =>
+                        new Date(x.timestamp)
+                        .toLocaleTimeString()
+                    );
+
+                    // Diagramm aktualisieren
+
+                    myChart.data.labels = labels.reverse();
+
+                    myChart.data.datasets[0].data =
+                    values.reverse();
+
+                    myChart.update();
+                }
+
+            }catch(error){
+
+                console.error(error);
+
+            }
+        }
+    
+
+
+        // =========================
+        // Daten laden beim Start
+        // =========================
+
+        loadSensorData();
+
+
+        // =========================
+        // Live Updates alle 2 Sek
+        // =========================
+
+        setInterval(loadSensorData, 2000);
+
+    </script>
+
+</body>
+</html>

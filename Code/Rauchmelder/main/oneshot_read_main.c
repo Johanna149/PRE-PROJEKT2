@@ -24,7 +24,7 @@ const static char *TAG = "MQ2";
 /*---------------------------------------------------------------
         Server Konfiguration
 ---------------------------------------------------------------*/
-#define SERVER_URL "http://172.20.10.9:5297/api/sensor-data"
+#define SERVER_URL "http://172.20.10.3:5297/api/sensor-data"
 #define DEVICE_ID      "ESP32-001"
 #define WIFI_SSID      "iPhone von Johanna"
 #define WIFI_PASSWORD  "tudasnicht"
