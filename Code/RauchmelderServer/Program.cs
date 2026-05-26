@@ -92,6 +92,7 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
 }
 
+<<<<<<< HEAD
 // Einfache Dashboard-HTML-Seite zur Anzeige der Messwerte
 app.MapGet("/", () =>
 {
@@ -138,3 +139,6 @@ app.MapGet("/", () =>
 });
 
 app.Run();
+=======
+app.Run("http://0.0.0.0:5297");
+>>>>>>> d98641119efe69b3f69e851c998cdf0575e19244

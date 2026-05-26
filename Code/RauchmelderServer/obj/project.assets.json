@@ -1566,19 +1566,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\schin\\.nuget\\packages\\": {}
+    "C:\\Users\\parze\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\schin\\OneDrive - HTL Krems\\PRE\\Projekt2\\PRE-PROJEKT2\\Code\\RauchmelderServer\\RauchmelderServer.csproj",
+      "projectUniqueName": "C:\\Users\\parze\\OneDrive - HTL Krems\\Dokumente\\3AHBGM\\Projektentwicklung\\2.Projekt\\PRE-PROJEKT2-1\\Code\\RauchmelderServer\\RauchmelderServer.csproj",
       "projectName": "RauchmelderServer",
-      "projectPath": "C:\\Users\\schin\\OneDrive - HTL Krems\\PRE\\Projekt2\\PRE-PROJEKT2\\Code\\RauchmelderServer\\RauchmelderServer.csproj",
-      "packagesPath": "C:\\Users\\schin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\schin\\OneDrive - HTL Krems\\PRE\\Projekt2\\PRE-PROJEKT2\\Code\\RauchmelderServer\\obj\\",
+      "projectPath": "C:\\Users\\parze\\OneDrive - HTL Krems\\Dokumente\\3AHBGM\\Projektentwicklung\\2.Projekt\\PRE-PROJEKT2-1\\Code\\RauchmelderServer\\RauchmelderServer.csproj",
+      "packagesPath": "C:\\Users\\parze\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\parze\\OneDrive - HTL Krems\\Dokumente\\3AHBGM\\Projektentwicklung\\2.Projekt\\PRE-PROJEKT2-1\\Code\\RauchmelderServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\schin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\parze\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -1600,9 +1600,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net7.0": {
@@ -1632,24 +1632,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.20, 7.0.20]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[7.0.20, 7.0.20]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.20, 7.0.20]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[7.0.20, 7.0.20]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1658,20 +1640,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Das Paket \"System.Text.Json\" 7.0.0 weist eine bekannte hoch Schweregrad-Sicherheitsanfälligkeit auf, https://github.com/advisories/GHSA-hh2w-p6rv-4g7w.",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  }
 }

@@ -26,4 +26,3 @@ CREATE TABLE speichert_werte (
 CREATE INDEX idx_speichert_werte_melder_id ON speichert_werte(melder_id);
 CREATE INDEX idx_speichert_werte_datum ON speichert_werte(datum);
 CREATE INDEX idx_speichert_werte_status ON speichert_werte(status);
-
